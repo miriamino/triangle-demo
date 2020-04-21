@@ -20,12 +20,12 @@ function setup() {
 	s1 = select('#s1');
 	s2 = select('#s2');
 	s3 = select('#s3');
-	labels = selectAll('label')
+	labels = selectAll('label');
 	button1 = select('#button1');
-	button2 = select('#button2')
-	buttons = selectAll('button')
+	button2 = select('#button2');
+	buttons = selectAll('button');
 	button1.position(30, 30);
-	button2.position(100 + button1.width, 30)
+	button2.position(100 + button1.width, 30);
 	button1.mousePressed(addColor);
 	button2.mousePressed(changeBG);
 	for (let i = 0; i < buttons.length; i++) {
@@ -57,7 +57,7 @@ function setup() {
 	s1.position(170, 110);
 	s2.position(170, 140);
 	s3.position(170, 170);
-	sliders = selectAll('.slider')
+	sliders = selectAll('.slider');
 
 
 
@@ -65,7 +65,8 @@ function setup() {
 }
 
 function draw() {
-	background(bg1, bg2, bg3, 50)
+	resizeCanvas(windowWidth, windowHeight);
+	background(bg1, bg2, bg3, 50);
 	for (let tx of triangles) {
 		tx.spread();
 		tx.move();
@@ -75,29 +76,29 @@ function draw() {
 	val2 = slider2.value();
 	val3 = slider3.value();
 	for (let i = 0; i < buttons.length; i++) {
-		buttons[i].style("background-color", "rgb(" + (val1+5) + "," + (val2+5) + "," + (val3+5) + ")");
-		buttons[i].style("color", "rgb(" + (bg1-5) + "," + (bg2-5) + "," + (bg3-5) + ")");
-		}
-for(let i =0; i< labels.length; i++) {
-	labels[i].style('color', "rgb(" + (val1 + 10) + "," + (val2 + 10) + "," + (val3 + 10) + ")");
-}
+		buttons[i].style("background-color", "rgb(" + (val1 + 5) + "," + (val2 + 5) + "," + (val3 + 5) + ")");
+		buttons[i].style("color", "rgb(" + (bg1 - 5) + "," + (bg2 - 5) + "," + (bg3 - 5) + ")");
+	}
+	for (let i = 0; i < labels.length; i++) {
+		labels[i].style('color', "rgb(" + (val1 + 10) + "," + (val2 + 10) + "," + (val3 + 10) + ")");
+	}
 	noStroke();
-	fill(r[3], g[3], b[3])
-	ellipse(50, 210, 30, 30)
-	fill(r[1], g[1], b[1])
-	ellipse(50, 250, 30, 30)
-	fill(r[2], g[2], b[2])
-	ellipse(95, 210, 30, 30)
-	fill(r[0], g[0], b[0])
-	ellipse(95, 250, 30, 30)
+	fill(r[3], g[3], b[3]);
+	ellipse(50, 210, 30, 30);
+	fill(r[1], g[1], b[1]);
+	ellipse(50, 250, 30, 30);
+	fill(r[2], g[2], b[2]);
+	ellipse(95, 210, 30, 30);
+	fill(r[0], g[0], b[0]);
+	ellipse(95, 250, 30, 30);
 }
 
 function mouseDragged() {
-	let triangle = new Triangle(mouseX, mouseY, random(300, 0), random(70), random(70), random(70), r[count] - random(30), g[count] + random(30), b[count] - random(30))
+	let triangle = new Triangle(mouseX, mouseY, random(300, 0), random(70), random(70), random(70), r[count] - random(30), g[count] + random(30), b[count] - random(30));
 	triangles.push(triangle);
 	count = count + 1
 	if (count >= r.length) {
-		count = 0
+		count = 0;
 	};
 
 }
@@ -145,7 +146,7 @@ function addColor() {
 	b.push(val3);
 	r.splice(0, 1);
 	g.splice(0, 1);
-	b.splice(0, 1)
+	b.splice(0, 1);
 
 	for (let i = triangles.length - 1; i > 0; i--) {
 		triangles.splice(i, 1);
