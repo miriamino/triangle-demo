@@ -33,6 +33,7 @@ function setup() {
 		buttons[i].style("color", "rgb(237, 255, 128)");
 		buttons[i].style("border", "none");
 		buttons[i].style("font-size", "24px");
+		buttons[i].style("border-radius", "5px")
 	}
 	s1.style('font-size', '20px');
 	s2.style('font-size', '20px');
