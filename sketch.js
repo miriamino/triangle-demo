@@ -27,7 +27,7 @@ function setup() {
 	button1.position(30, 30);
 	button2.position(100 + button1.width, 30);
 	button1.mousePressed(addColor);
-	button2.mousePressed(changeBG);
+	// button2.mousePressed(changeBG);
 	for (let i = 0; i < buttons.length; i++) {
 		buttons[i].style("padding", "10px");
 		buttons[i].style("color", "rgb(237, 255, 128)");
@@ -66,7 +66,9 @@ function setup() {
 
 function draw() {
 	resizeCanvas(windowWidth, windowHeight);
-	background(bg1, bg2, bg3, 50);
+	background(bg1, bg2, bg3);
+
+
 	for (let tx of triangles) {
 		tx.spread();
 		tx.move();
@@ -76,12 +78,13 @@ function draw() {
 	val2 = slider2.value();
 	val3 = slider3.value();
 	for (let i = 0; i < buttons.length; i++) {
-		buttons[i].style("background-color", "rgb(" + (val1 + 5) + "," + (val2 + 5) + "," + (val3 + 5) + ")");
-		buttons[i].style("color", "rgb(" + (bg1 - 5) + "," + (bg2 - 5) + "," + (bg3 - 5) + ")");
+		buttons[i].style("background-color", "rgb(" + (val1-10)  + "," + (val2-10) + "," + (val3-10) + ")");
+		buttons[i].style("color", "rgb(" + bg1 + "," + bg2 + "," + bg3 + ")");
 	}
 	for (let i = 0; i < labels.length; i++) {
-		labels[i].style('color', "rgb(" + (val1 + 10) + "," + (val2 + 10) + "," + (val3 + 10) + ")");
+		labels[i].style('color', "rgb(" + (val1-10)  + "," + (val2-10) + "," + (val3-10)  + ")");
 	}
+		button2.mousePressed(changeBG);
 	noStroke();
 	fill(r[3], g[3], b[3]);
 	ellipse(50, 210, 30, 30);
