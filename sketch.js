@@ -3,7 +3,7 @@ let g = [28, 70, 21, 34];
 let b = [237, 201, 120, 157];
 let count = 0;
 let triangles = [];
-let button1, button2, input, slider1, slider2, slider3;
+let button1, button2, input, slider1, slider2, slider3, p1, p2, p3;
 let val1 = 249;
 let val2 = 70;
 let val3 = 201;
@@ -14,6 +14,9 @@ let bg3 = 128;
 function setup() {
 	createCanvas(windowWidth, windowHeight);
 	background(237, 255, 128);
+	p1 = createP('red');
+	p2 = createP('green');
+	p3 = createP('blue')
 	button1 = createButton('add color');
 	button2 = createButton('change background')
 	button1.position(30, 30);
@@ -21,9 +24,12 @@ function setup() {
 	button1.mousePressed(addColor);
 	button2.mousePressed(changeBG);
 	button1.style("padding", "10px");
-	button1.style("color", "rgb(" + bg1 + ", " + bg2+ ", " + bg3+ ")");
+	button1.style("color", "rgb(237, 255, 128)");
 	button1.style("border", "none");
 	button1.style("font-size", "24px");
+	p1.style('font-size', '24px');
+	p2.style('font-size', '24px');
+	p3.style('font-size', '24px');
 	button2.style("padding", "10px");
 	button2.style("color", "rgb(237, 255, 128)");
 	button2.style("border", "none");
@@ -37,10 +43,13 @@ function setup() {
 	// input.style("color", "rgb(240, 34, 157)");
 	slider1 = createSlider(1, 255, val1, 1);
 	slider1.position(30, 100);
+	p1.position(50+slider1.width, 75)
 	slider2 = createSlider(1, 255, val2, 1);
 	slider2.position(30, 130);
+	p2.position(50+slider2.width,105)
 	slider3 = createSlider(0, 255, val3, 1);
 	slider3.position(30, 160);
+	p3.position(50+slider3.width, 135)
 
 
 
@@ -59,7 +68,18 @@ function draw() {
 
 	button1.style("background-color", "rgb(" + val1 + "," + val2 + "," + val3 + ")");
 	button2.style("background-color", "rgb(" + val1 + "," + val2 + "," + val3 + ")");
-
+	p1.style('color', "rgb(" + val1 + "," + val2 + "," + val3 + ")");
+	p2.style('color', "rgb(" + val1 + "," + val2 + "," + val3 + ")");
+	p3.style('color', "rgb(" + val1 + "," + val2 + "," + val3 + ")");
+	noStroke();
+	fill(r[3], g[3], b[3])
+	ellipse(50, 210, 30, 30) 
+	fill(r[1], g[1], b[1])
+	ellipse(50, 250, 30, 30) 
+	fill(r[2], g[2], b[2])
+	ellipse(95, 210, 30, 30)
+	fill(r[0], g[0], b[0])
+	ellipse(95, 250, 30, 30)
 }
 
 function mouseDragged() {
@@ -123,8 +143,8 @@ function addColor() {
 }
 
 function changeBG() {
-	bg1=slider1.value();
-	bg2=slider2.value();
-	bg3=slider3.value();
+	bg1 = slider1.value();
+	bg2 = slider2.value();
+	bg3 = slider3.value();
 	background(bg1, bg2, bg3);
 }
