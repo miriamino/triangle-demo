@@ -3,37 +3,41 @@ let g = [28, 70, 21, 34];
 let b = [237, 201, 120, 157];
 let count = 0;
 let triangles = [];
-let button1, button2, input, slider1, slider2, slider3, p1, p2, p3;
+let button1, button2, input, slider1, slider2, slider3, s1, s2, s3;
 let val1 = 249;
 let val2 = 70;
 let val3 = 201;
 let bg1 = 237;
 let bg2 = 255;
 let bg3 = 128;
+let labels = [];
+let buttons = [];
+let sliders = [];
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
 	background(237, 255, 128);
-	p1 = createP('red');
-	p2 = createP('green');
-	p3 = createP('blue')
-	button1 = createButton('add color');
-	button2 = createButton('change background')
+	s1 = select('#s1');
+	s2 = select('#s2');
+	s3 = select('#s3');
+	labels = selectAll('label')
+	button1 = select('#button1');
+	button2 = select('#button2')
+	buttons = selectAll('button')
 	button1.position(30, 30);
 	button2.position(100 + button1.width, 30)
 	button1.mousePressed(addColor);
 	button2.mousePressed(changeBG);
-	button1.style("padding", "10px");
-	button1.style("color", "rgb(237, 255, 128)");
-	button1.style("border", "none");
-	button1.style("font-size", "24px");
-	p1.style('font-size', '24px');
-	p2.style('font-size', '24px');
-	p3.style('font-size', '24px');
-	button2.style("padding", "10px");
-	button2.style("color", "rgb(237, 255, 128)");
-	button2.style("border", "none");
-	button2.style("font-size", "24px");
+	for (let i = 0; i < buttons.length; i++) {
+		buttons[i].style("padding", "10px");
+		buttons[i].style("color", "rgb(237, 255, 128)");
+		buttons[i].style("border", "none");
+		buttons[i].style("font-size", "24px");
+	}
+	s1.style('font-size', '20px');
+	s2.style('font-size', '20px');
+	s3.style('font-size', '20px');
+
 	// input = createInput("type here");
 	// input.position(100 + button1.width, 30 + 10);
 	// input.style("background-color", "transparent");
@@ -41,15 +45,20 @@ function setup() {
 	// input.style("border-bottom", "dashed #F946C9");
 	// input.style("font-size", "24px");
 	// input.style("color", "rgb(240, 34, 157)");
-	slider1 = createSlider(1, 255, val1, 1);
-	slider1.position(30, 100);
-	p1.position(50+slider1.width, 75)
-	slider2 = createSlider(1, 255, val2, 1);
-	slider2.position(30, 130);
-	p2.position(50+slider2.width,105)
-	slider3 = createSlider(0, 255, val3, 1);
-	slider3.position(30, 160);
-	p3.position(50+slider3.width, 135)
+	slider1 = select('#slider1');
+	slider2 = select('#slider2');
+	slider3 = select('#slider3');
+	slider1.value(val1);
+	slider2.value(val2);
+	slider3.value(val3);
+	slider1.position(30, 120);
+	slider2.position(30, 150);
+	slider3.position(30, 180);
+	s1.position(170, 110);
+	s2.position(170, 140);
+	s3.position(170, 170);
+	sliders = selectAll('.slider')
+
 
 
 
@@ -65,17 +74,18 @@ function draw() {
 	val1 = slider1.value();
 	val2 = slider2.value();
 	val3 = slider3.value();
-
-	button1.style("background-color", "rgb(" + val1 + "," + val2 + "," + val3 + ")");
-	button2.style("background-color", "rgb(" + val1 + "," + val2 + "," + val3 + ")");
-	p1.style('color', "rgb(" + val1 + "," + val2 + "," + val3 + ")");
-	p2.style('color', "rgb(" + val1 + "," + val2 + "," + val3 + ")");
-	p3.style('color', "rgb(" + val1 + "," + val2 + "," + val3 + ")");
+	for (let i = 0; i < buttons.length; i++) {
+		buttons[i].style("background-color", "rgb(" + (val1+5) + "," + (val2+5) + "," + (val3+5) + ")");
+		buttons[i].style("color", "rgb(" + (bg1-5) + "," + (bg2-5) + "," + (bg3-5) + ")");
+		}
+for(let i =0; i< labels.length; i++) {
+	labels[i].style('color', "rgb(" + (val1 + 10) + "," + (val2 + 10) + "," + (val3 + 10) + ")");
+}
 	noStroke();
 	fill(r[3], g[3], b[3])
-	ellipse(50, 210, 30, 30) 
+	ellipse(50, 210, 30, 30)
 	fill(r[1], g[1], b[1])
-	ellipse(50, 250, 30, 30) 
+	ellipse(50, 250, 30, 30)
 	fill(r[2], g[2], b[2])
 	ellipse(95, 210, 30, 30)
 	fill(r[0], g[0], b[0])
