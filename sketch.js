@@ -52,9 +52,9 @@ function setup() {
 	slider1.value(val1);
 	slider2.value(val2);
 	slider3.value(val3);
-	slider1.position(30, 120);
-	slider2.position(30, 150);
-	slider3.position(30, 180);
+	slider1.position(30, 113);
+	slider2.position(30, 143);
+	slider3.position(30, 173);
 	s1.position(170, 110);
 	s2.position(170, 140);
 	s3.position(170, 170);
