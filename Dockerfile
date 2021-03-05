@@ -1,7 +1,5 @@
-FROM ubuntu
-COPY . /triangle
-WORKDIR /triangle
-ARG DEBIAN_FRONTEND=noninteractive
-RUN apt update && apt install -y nodejs npm
+FROM node
+EXPOSE 8080 
+COPY . .
 RUN npm install -g http-server
 CMD http-server
