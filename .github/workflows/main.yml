@@ -11,9 +11,16 @@ jobs:
       - name: Deploy Docker Image to Heroku App
         uses: jctaveras/heroku-deploy@v2.1.1
         id: heroku
+      - name: Push to Docker Hub
+        uses: docker/build-push-action@v1
         with:
           email: ${{ secrets.HEROKU_EMAIL }} # your heroku email
           api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
           app_name: ${{ secrets.HEROKU_APP_NAME }} # you aplication name
           dockerfile_path: '.' # set the path to the folder wher the Dokerfile is located
           formation: 'web' # Docker Dyno Formation. By default is web
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: miriamino/triangles
+          tag_with_ref: true
+
