@@ -1,5 +1,5 @@
 name: 'triangles' 
-on: {} # set the events you would like to trigger this job
+on: { push } # set the events you would like to trigger this job
 jobs:
   build:
     runs-on: ubuntu-latest
